@@ -17,6 +17,7 @@ class TestComplexity < Test::Unit::TestCase
   
   def test_if
     assert_equal 2, meth("if x == 2 then do_something end")
+    assert_equal 2, meth("do_something if x == 2")
   end
   
   def test_if_elsif
