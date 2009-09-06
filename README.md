@@ -6,7 +6,7 @@ Written by Loren Segal in 2009
 SYNOPSIS
 --------
 
-Calculates the [cyclomatic complexity][1] of the methods in your Ruby code.
+Calculates the McCabe [cyclomatic complexity][1] index of the methods in your Ruby code.
 The calculation is a basic `NUMBER_OF_BRANCHES + 1` calculation which can be used 
 this calculation to approximate the minimum number of test cases for each of
 your methods ([complexity should equal number of test cases][3]). You can also use
