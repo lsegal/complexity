@@ -7,6 +7,7 @@ csv = false
 OptionParser.new do |opts|
   opts.banner = "Usage: complexity [--csv] [FILES]"
   opts.on('--csv', "Print CSV formatted output") { csv = true }
+  opts.on('-v', '--version') { puts "complexity 1.0.0, yard #{YARD::VERSION}"; exit }
 end.parse!
 YARD.parse(ARGV[0] || 'lib/**/*.rb')
 
