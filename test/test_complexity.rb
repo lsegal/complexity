@@ -32,11 +32,11 @@ class TestComplexity < Test::Unit::TestCase
   end
   
   def test_ifop
-    assert_equal 3, meth("1 ? 2 : 3 ? 4 : 5")
+    assert_equal 4, meth("1 ? 2 : 3 ? 4 : 5")
   end
   
   def test_block
     assert_equal 2, meth("loop do X end")
-    assert_equal 3, meth("loop { 1 ? 2 : 1 }")
+    assert_equal 4, meth("loop { 1 ? 2 : 1 }")
   end
 end
