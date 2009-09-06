@@ -4,7 +4,7 @@ require 'yard'
 class ComplexityHandler < YARD::Handlers::Ruby::Base
   handles %r{.*}
   
-  BRANCH_TYPES = [:if, :if_mod, :unless, :unless_mod, :when, :elsif, :else, :ifop,
+  BRANCH_TYPES = [:if, :if_mod, :unless, :unless_mod, :when, :elsif, :else,
     :while, :while_mod, :until, :until_mod, :for, :do_block, :brace_block, :rescue]
   
   def process
@@ -14,6 +14,7 @@ class ComplexityHandler < YARD::Handlers::Ruby::Base
     owner[:complexity] = 1
     statement.parent.last.traverse do |node|
       owner[:complexity] += 1 if BRANCH_TYPES.include?(node.type)
+      owner[:complexity] += 2 if node.type == :ifop
     end
   end
 end
