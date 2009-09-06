@@ -40,4 +40,8 @@ class TestComplexity < Test::Unit::TestCase
     assert_equal 2, meth("loop do X end")
     assert_equal 3, meth("loop { 1 ? 2 : 1 }")
   end
+  
+  def test_rescue
+    assert_equal 2, meth("blah rescue nil")
+  end
 end

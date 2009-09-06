@@ -5,7 +5,8 @@ class ComplexityHandler < YARD::Handlers::Ruby::Base
   handles %r{.*}
   
   BRANCH_TYPES = [:if, :if_mod, :unless, :unless_mod, :when, :elsif, :ifop,
-    :while, :while_mod, :until, :until_mod, :for, :do_block, :brace_block, :rescue]
+    :while, :while_mod, :until, :until_mod, :for, :do_block, :brace_block, 
+    :rescue, :rescue_mod]
   
   def process
     return unless YARD::CodeObjects::MethodObject === owner
