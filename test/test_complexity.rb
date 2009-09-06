@@ -14,12 +14,27 @@ class TestComplexity < Test::Unit::TestCase
   end
   
   def test_if
-    meth("if x == 2 then do_something end")
-    assert_equal 2, meth
+    assert_equal 2, meth("if x == 2 then do_something end")
   end
   
   def test_if_elsif
-    meth("if x == 2; A elsif x == 3; B end")
-    assert_equal 3, meth
+    assert_equal 3, meth("if x == 2; A elsif x == 3; B end")
+  end
+
+  def test_if_elsif_else
+    assert_equal 4, meth("if x == 2; A elsif x == 3; B; else C end")
+  end
+  
+  def test_case
+    assert_equal 5, meth("case X; when 1; A; when 2; B; when 3; C; when 4; D end")
+  end
+  
+  def test_ifop
+    assert_equal 3, meth("1 ? 2 : 3 ? 4 : 5")
+  end
+  
+  def test_block
+    assert_equal 2, meth("loop do X end")
+    assert_equal 3, meth("loop { 1 ? 2 : 1 }")
   end
 end
