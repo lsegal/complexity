@@ -3,9 +3,11 @@ $:.unshift(File.dirname(__FILE__) + '/../lib')
 require "test/unit"
 require "complexity"
 
+METH_NAME = 'Test#meth'
+
 def meth(src = nil)
   YARD.parse_string("class Test; def meth; #{src} end end") if src
-  YARD::Registry.at('Test#meth').complexity
+  YARD::Registry.at(METH_NAME).complexity
 end
 
 class TestComplexity < Test::Unit::TestCase
@@ -20,7 +22,7 @@ class TestComplexity < Test::Unit::TestCase
   def test_if_elsif
     assert_equal 3, meth("if x == 2; A elsif x == 3; B end")
   end
-
+  
   def test_if_elsif_else
     assert_equal 4, meth("if x == 2; A elsif x == 3; B; else C end")
   end
