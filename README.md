@@ -17,7 +17,7 @@ Some more reading can be found at [http://www.linuxjournal.com/article/8035][1].
 USAGE
 -----
 
-* Requires Ruby 1.9.x and [YARD][3]
+* Requires [YARD][3]
 
 Syntax: `ruby complexity.rb [--csv] GLOB_OF_FILES` 
 
