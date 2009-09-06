@@ -43,19 +43,3 @@ class LegacyComplexityHandler < YARD::Handlers::Ruby::Legacy::Base
     end
   end
 end
-
-YARD.parse(ARGV[0] || 'lib/**/*.rb')
-
-YARD::Registry.all(:method).each do |meth|
-  meth[:complexity] ||= 1
-end
-
-if ARGV.index("--csv")
-  puts YARD::Registry.all(:method).map {|m| [m.path, m.complexity].join(',') }
-else
-  max = 40
-  YARD::Registry.all(:method).each {|m| max = m.path.length if m.path.length > max }
-  YARD::Registry.all(:method).each do |meth|
-    puts "#{meth.path}#{' ' * (max - meth.path.size)}#{meth.complexity}"
-  end
-end
